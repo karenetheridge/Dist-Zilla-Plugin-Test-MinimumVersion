@@ -1,1 +1,2 @@
-Dist-Zilla-Plugin-MinimumVersionTests-*
+Dist-Zilla-Plugin-Test-MinimumVersion-*
+.build
