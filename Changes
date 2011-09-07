@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+
+v2.0.0    2011-09-07
     - Renamed to Dist::Zilla::Plugin::Test::MinimumVersion
 
 1.101421  2010-05-22 18:01:53 Europe/Vienna
