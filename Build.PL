@@ -27,12 +27,13 @@ my %module_build_args = (
     "Marcel Gr\303\274nauer <marcel\@cpan.org>"
   ],
   "dist_name" => "Dist-Zilla-Plugin-Test-MinimumVersion",
-  "dist_version" => "2.0.1",
+  "dist_version" => "2.000002",
   "license" => "perl",
   "module_name" => "Dist::Zilla::Plugin::Test::MinimumVersion",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
+    "Dist::Zilla" => 4,
     "Dist::Zilla::Plugin::InlineFiles" => 0,
     "Moose" => 0,
     "Test::MinimumVersion" => 0,

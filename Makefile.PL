@@ -31,13 +31,14 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Dist::Zilla::Plugin::Test::MinimumVersion",
   "PREREQ_PM" => {
+    "Dist::Zilla" => 4,
     "Dist::Zilla::Plugin::InlineFiles" => 0,
     "Moose" => 0,
     "Test::MinimumVersion" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "2.0.1",
+  "VERSION" => "2.000002",
   "test" => {
     "TESTS" => "t/*.t"
   }
