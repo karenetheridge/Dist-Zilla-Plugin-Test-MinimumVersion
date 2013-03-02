@@ -3,18 +3,24 @@ NAME
     required versions
 
 VERSION
-    version 2.000002
+    version 2.000003
 
 SYNOPSIS
     In "dist.ini":
 
         [Test::MinimumVersion]
+        max_target_perl = 5.10.1
 
 DESCRIPTION
-    This is an extension of Dist::Zilla::Plugin::InlineFiles, providing the
-    following file:
+    This is an extension of Dist::Zilla::Plugin::InlineFiles, providing a
+    Test::MinimumVersion test:
 
       xt/release/minimum-version.t - a standard Test::MinimumVersion test
+
+    You should provide the highest perl version you want to require as
+    "target_max_version". If you accidentally use perl features that are
+    newer than that version number, then the test will fail, and you can go
+    change whatever bumped up the minimum perl version required.
 
 AVAILABILITY
     The project homepage is

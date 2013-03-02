@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+
+2.000003  2013-03-02
     - Add max_target_perl to control the maximum perl we're
       okay with requiring explicitly [GH#1 - xdg++]
 

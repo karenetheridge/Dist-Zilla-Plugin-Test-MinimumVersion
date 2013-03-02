@@ -23,7 +23,6 @@ my %WriteMakefileArgs = (
     "autodie" => 0
   },
   "CONFIGURE_REQUIRES" => {
-    "ExtUtils::MakeMaker" => "6.30",
     "Module::Build" => "0.3601"
   },
   "DISTNAME" => "Dist-Zilla-Plugin-Test-MinimumVersion",
@@ -33,12 +32,13 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "Dist::Zilla" => 4,
     "Dist::Zilla::Plugin::InlineFiles" => 0,
+    "Dist::Zilla::Role::TextTemplate" => 0,
     "Moose" => 0,
     "Test::MinimumVersion" => 0,
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "2.000002",
+  "VERSION" => "2.000003",
   "test" => {
     "TESTS" => "t/*.t"
   }

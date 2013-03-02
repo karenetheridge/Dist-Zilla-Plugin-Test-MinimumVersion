@@ -18,7 +18,6 @@ my %module_build_args = (
     "autodie" => 0
   },
   "configure_requires" => {
-    "ExtUtils::MakeMaker" => "6.30",
     "Module::Build" => "0.3601"
   },
   "dist_abstract" => "Release tests for minimum required versions",
@@ -27,7 +26,7 @@ my %module_build_args = (
     "Marcel Gr\303\274nauer <marcel\@cpan.org>"
   ],
   "dist_name" => "Dist-Zilla-Plugin-Test-MinimumVersion",
-  "dist_version" => "2.000002",
+  "dist_version" => "2.000003",
   "license" => "perl",
   "module_name" => "Dist::Zilla::Plugin::Test::MinimumVersion",
   "recommends" => {},
@@ -35,6 +34,7 @@ my %module_build_args = (
   "requires" => {
     "Dist::Zilla" => 4,
     "Dist::Zilla::Plugin::InlineFiles" => 0,
+    "Dist::Zilla::Role::TextTemplate" => 0,
     "Moose" => 0,
     "Test::MinimumVersion" => 0,
     "perl" => "5.008",
