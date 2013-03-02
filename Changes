@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+    - Add max_target_perl to control the maximum perl we're
+      okay with requiring explicitly [GH#1 - xdg++]
 
 2.000002  2012-06-16
     - Declare Dist::Zilla dependency
