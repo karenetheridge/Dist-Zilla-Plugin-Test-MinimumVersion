@@ -1,6 +1,7 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+    - Fix spurious test failures with new deprecation warnings [GH#2]
 
 2.000003  2013-03-02
     - Add max_target_perl to control the maximum perl we're
