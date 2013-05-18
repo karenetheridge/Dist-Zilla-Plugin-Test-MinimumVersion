@@ -1,7 +1,6 @@
 use strict;
 use warnings;
 use Test::More 0.96 tests => 2;
-use autodie;
 use Test::DZil;
 use Moose::Autobox;
 
@@ -19,10 +18,6 @@ subtest 'explicit version' => sub {
         },
     );
     $tzil->build;
-    END { # Remove (empty) dir created by building the dists
-        require File::Path;
-        File::Path::rmtree('tmp') if -d 'tmp';
-    }
 
     my ($test) = map { $_->name eq 'xt/release/minimum-version.t' ? $_ : () } $tzil->files->flatten;
     ok $test, 'minimum-version.t exists'
@@ -45,10 +40,6 @@ subtest 'version from metayml' => sub {
         },
     );
     $tzil->build;
-    END { # Remove (empty) dir created by building the dists
-        require File::Path;
-        File::Path::rmtree('tmp') if -d 'tmp';
-    }
 
     my ($test) = map { $_->name eq 'xt/release/minimum-version.t' ? $_ : () } $tzil->files->flatten;
     ok $test, 'minimum-version.t exists'

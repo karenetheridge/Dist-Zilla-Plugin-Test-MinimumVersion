@@ -2,7 +2,6 @@ use strict;
 use warnings;
 use Test::More 0.96 tests => 2;
 use Test::Output;
-use autodie;
 use Test::DZil;
 use Moose::Autobox;
 
@@ -21,7 +20,6 @@ stderr_like(
     qr/^!!!.*deprecate/m,
     'Got a deprecation warning'
 );
-
 $tzil->build;
 
 my @xtests = map $_->name =~ m{^xt/} ? $_->name : (), $tzil->files->flatten;
@@ -29,8 +27,3 @@ ok(
     (grep { $_ eq 'xt/release/minimum-version.t' } @xtests),
     'minimum-version.t exists'
 ) or diag explain \@xtests;
-
-END { # Remove (empty) dir created by building the dists
-    require File::Path;
-    File::Path::rmtree('tmp');
-}
