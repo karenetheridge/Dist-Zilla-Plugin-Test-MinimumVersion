@@ -2,7 +2,6 @@ use strict;
 use warnings;
 use Test::More 0.96 tests => 2;
 use Test::DZil;
-use Moose::Autobox;
 
 subtest 'explicit version' => sub {
     plan tests => 2;
@@ -19,9 +18,9 @@ subtest 'explicit version' => sub {
     );
     $tzil->build;
 
-    my ($test) = map { $_->name eq 'xt/release/minimum-version.t' ? $_ : () } $tzil->files->flatten;
+    my ($test) = map { $_->name eq 'xt/release/minimum-version.t' ? $_ : () } @{ $tzil->files };
     ok $test, 'minimum-version.t exists'
-        or diag explain [ map { $_->name } $tzil->files->flatten ];
+        or diag explain [ map { $_->name } @{ $tzil->files } ];
 
     like $test->content => qr{\Q5.10.1\E}, 'max_target_perl used in test';
 };
@@ -41,9 +40,9 @@ subtest 'version from metayml' => sub {
     );
     $tzil->build;
 
-    my ($test) = map { $_->name eq 'xt/release/minimum-version.t' ? $_ : () } $tzil->files->flatten;
+    my ($test) = map { $_->name eq 'xt/release/minimum-version.t' ? $_ : () } @{ $tzil->files };
     ok $test, 'minimum-version.t exists'
-        or diag explain [ map { $_->name } $tzil->files->flatten ];
+        or diag explain [ map { $_->name } @{ $tzil->files } ];
 
     like $test->content => qr{metayml}, 'metayml used in test';
 };
