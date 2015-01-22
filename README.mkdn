@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::Test::MinimumVersion - Release tests for minimum required v
 
 # VERSION
 
-version 2.000005
+version 2.000006
 
 # SYNOPSIS
 
@@ -15,8 +15,8 @@ In `dist.ini`:
 
 # DESCRIPTION
 
-This is an extension of [Dist::Zilla::Plugin::InlineFiles](http://search.cpan.org/perldoc?Dist::Zilla::Plugin::InlineFiles), providing a
-[Test::MinimumVersion](http://search.cpan.org/perldoc?Test::MinimumVersion) test:
+This is an extension of [Dist::Zilla::Plugin::InlineFiles](https://metacpan.org/pod/Dist::Zilla::Plugin::InlineFiles), providing a
+[Test::MinimumVersion](https://metacpan.org/pod/Test::MinimumVersion) test:
 
     xt/release/minimum-version.t - a standard Test::MinimumVersion test
 
