@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::Plugin::Test::MinimumVersion;
-# ABSTRACT: Release tests for minimum required versions
+# ABSTRACT: Author tests for minimum required versions
 # VERSION
 
 use Moose;
@@ -49,7 +49,7 @@ __END__
 This is an extension of L<Dist::Zilla::Plugin::InlineFiles>, providing a
 L<Test::MinimumVersion> test:
 
-  xt/release/minimum-version.t - a standard Test::MinimumVersion test
+  xt/author/minimum-version.t - a standard Test::MinimumVersion test
 
 You should provide the highest perl version you want to require as
 C<target_max_version>. If you accidentally use perl features that are newer
@@ -59,7 +59,7 @@ whatever bumped up the minimum perl version required.
 =cut
 
 __DATA__
-___[ xt/release/minimum-version.t ]___
+___[ xt/author/minimum-version.t ]___
 #!perl
 
 use Test::More;

@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+    - make this test an author rather than release test -- it is a test you
+      want passing on every commit. (GH#6, ether)
 
 2.000006  2015-01-22
     - Eliminate use of Moose::Autobox in tests [GH#5 - kentnl++]
