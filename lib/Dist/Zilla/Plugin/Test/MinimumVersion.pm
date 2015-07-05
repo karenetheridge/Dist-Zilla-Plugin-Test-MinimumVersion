@@ -8,7 +8,8 @@ package Dist::Zilla::Plugin::Test::MinimumVersion;
 
 use Moose;
 extends 'Dist::Zilla::Plugin::InlineFiles';
-with 'Dist::Zilla::Role::TextTemplate';
+with 'Dist::Zilla::Role::TextTemplate',
+    'Dist::Zilla::Role::PrereqSource';
 
 has max_target_perl => (
     is => 'ro',
@@ -28,6 +29,17 @@ around add_file => sub {
         })
     );
 };
+
+sub register_prereqs {
+    my $self = shift;
+    $self->zilla->register_prereqs(
+        {
+            type  => 'requires',
+            phase => 'develop',
+        },
+        'Test::MinimumVersion' => 0,
+    );
+}
 
 __PACKAGE__->meta->make_immutable;
 no Moose;
@@ -64,9 +76,7 @@ ___[ xt/author/minimum-version.t ]___
 
 use Test::More;
 
-eval "use Test::MinimumVersion";
-plan skip_all => "Test::MinimumVersion required for testing minimum versions"
-  if $@;
+use Test::MinimumVersion;
 {{ $version
     ? "all_minimum_version_ok( qq{$version} );"
     : "all_minimum_version_from_metayml_ok();"
