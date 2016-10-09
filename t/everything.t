@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More 0.96 tests => 2;
+use Test::More 0.96 tests => 3;
 use Test::DZil;
 
 subtest 'explicit version' => sub {
@@ -45,4 +45,25 @@ subtest 'version from metayml' => sub {
         or diag explain [ map { $_->name } @{ $tzil->files } ];
 
     like $test->content => qr{metayml}, 'metayml used in test';
+};
+
+subtest 'develop prereq added' => sub {
+    plan tests => 1;
+
+    my $tzil = Builder->from_config(
+        { dist_root => 'corpus/DZ1' },
+        {
+            add_files => {
+                'source/dist.ini' => simple_ini(
+                    ('GatherDir', 'Test::MinimumVersion')
+                ),
+            },
+        },
+    );
+    $tzil->build;
+
+    my $prereqs = $tzil->prereqs->as_string_hash;
+    ok exists $prereqs->{develop}->{requires}->{'Test::MinimumVersion'},
+        'Test::MinimumVersion is a develop prereq',
+        ;
 };

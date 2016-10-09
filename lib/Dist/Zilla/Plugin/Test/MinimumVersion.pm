@@ -8,7 +8,20 @@ package Dist::Zilla::Plugin::Test::MinimumVersion;
 
 use Moose;
 extends 'Dist::Zilla::Plugin::InlineFiles';
-with 'Dist::Zilla::Role::TextTemplate';
+with 'Dist::Zilla::Role::TextTemplate',
+    'Dist::Zilla::Role::PrereqSource',
+    ;
+
+sub register_prereqs {
+    my $self = shift @_;
+
+    $self->zilla->register_prereqs(
+        { phase => 'develop' },
+        'Test::MinimumVersion' => 0,
+    );
+
+    return;
+}
 
 has max_target_perl => (
     is => 'ro',
