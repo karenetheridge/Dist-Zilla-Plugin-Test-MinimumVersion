@@ -14,9 +14,11 @@ In C<dist.ini>:
 
     [Test::MinimumVersion]
 
-=for test_synopsis
-1;
-__END__
+=begin :prelude
+
+=for test_synopsis BEGIN { die "SKIP: Synopsis isn't Perl code" }
+
+=end :prelude
 
 =cut
 
