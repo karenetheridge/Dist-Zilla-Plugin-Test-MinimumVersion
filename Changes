@@ -1,6 +1,7 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+    - Add Test::MinimumVersion as a develop prereq [rsrchboy]
 
 2.000006  2015-01-22
     - Eliminate use of Moose::Autobox in tests [GH#5 - kentnl++]
