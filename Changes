@@ -1,6 +1,10 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+    - make this test an author rather than release test -- it is a test you
+      want passing on every commit. (GH#6, ether)
+    - inject a develop prereq on Test::MinimumVersion, and require it in the
+      test
 
 2.000007  2016-10-18
     - Add Test::MinimumVersion as a develop prereq [rsrchboy]
