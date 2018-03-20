@@ -30,6 +30,10 @@ around add_file => sub {
     );
 };
 
+=for Pod::Coverage register_prereqs
+
+=cut
+
 sub register_prereqs {
     my $self = shift;
     $self->zilla->register_prereqs(
