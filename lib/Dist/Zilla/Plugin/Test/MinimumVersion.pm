@@ -81,7 +81,6 @@ use strict;
 use warnings;
 
 use Test::More;
-
 use Test::MinimumVersion;
 {{ $version
     ? "all_minimum_version_ok( qq{$version} );"
