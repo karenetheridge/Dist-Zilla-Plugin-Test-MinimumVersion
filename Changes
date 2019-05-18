@@ -1,6 +1,6 @@
-Revision history for Perl extension {{$dist->name}}
+Revision history for Perl extension Dist-Zilla-Plugin-Test-MinimumVersion
 
-{{$NEXT}}
+2.000009  2019-05-18 04:34:14Z
     - remove shebang from generated test
     - add strict, warnings to generated test
     - separate file gathering and file munging into separate phases

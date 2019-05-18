@@ -1,0 +1,95 @@
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+Dist::Zilla::Plugin::Test::MinimumVersion - Author tests for minimum required versions
+
+=head1 VERSION
+
+version 2.000009
+
+=head1 SYNOPSIS
+
+In C<dist.ini>:
+
+    [Test::MinimumVersion]
+    max_target_perl = 5.10.1
+
+1;
+__END__
+
+=head1 DESCRIPTION
+
+=for Pod::Coverage register_prereqs
+
+=for Pod::Coverage FILENAME gather_files munge_files register_prereqs
+
+This is an extension of L<Dist::Zilla::Plugin::InlineFiles>, providing a
+L<Test::MinimumVersion> test:
+
+  xt/author/minimum-version.t - a standard Test::MinimumVersion test
+
+You should provide the highest perl version you want to require as
+C<target_max_version>. If you accidentally use perl features that are newer
+than that version number, then the test will fail, and you can go change
+whatever bumped up the minimum perl version required.
+
+=head1 SUPPORT
+
+Bugs may be submitted through L<the RT bug tracker|https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-Plugin-Test-MinimumVersion>
+(or L<bug-Dist-Zilla-Plugin-Test-MinimumVersion@rt.cpan.org|mailto:bug-Dist-Zilla-Plugin-Test-MinimumVersion@rt.cpan.org>).
+
+There is also a mailing list available for users of this distribution, at
+L<http://dzil.org/#mailing-list>.
+
+There is also an irc channel available for users of this distribution, at
+L<C<#distzilla> on C<irc.perl.org>|irc://irc.perl.org/#distzilla>.
+
+=head1 AUTHORS
+
+=over 4
+
+=item *
+
+Mike Doherty <doherty@cpan.org>
+
+=item *
+
+Marcel Grünauer <marcel@cpan.org>
+
+=back
+
+=head1 CONTRIBUTORS
+
+=for stopwords Karen Etheridge Marcel Gruenauer Chris Weyl Kent Fredric
+
+=over 4
+
+=item *
+
+Karen Etheridge <ether@cpan.org>
+
+=item *
+
+Marcel Gruenauer <hanekomu@gmail.com>
+
+=item *
+
+Chris Weyl <cweyl@alumni.drew.edu>
+
+=item *
+
+Kent Fredric <kentfredric@gmail.com>
+
+=back
+
+=head1 COPYRIGHT AND LICENCE
+
+This software is copyright (c) 2010 by Mike Doherty.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
