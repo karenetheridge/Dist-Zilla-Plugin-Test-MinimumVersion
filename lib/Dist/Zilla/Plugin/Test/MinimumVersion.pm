@@ -77,7 +77,8 @@ whatever bumped up the minimum perl version required.
 
 __DATA__
 ___[ xt/author/minimum-version.t ]___
-#!perl
+use strict;
+use warnings;
 
 use Test::More;
 
