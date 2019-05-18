@@ -4,7 +4,9 @@ use warnings;
 
 package Dist::Zilla::Plugin::MinimumVersionTests;
 # ABSTRACT: Release tests for minimum required versions
-# VERSION
+
+our $VERSION = '2.000009';
+
 use Moose;
 extends 'Dist::Zilla::Plugin::Test::MinimumVersion';
 

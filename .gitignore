@@ -1,2 +1,6 @@
-Dist-Zilla-Plugin-Test-MinimumVersion-*
-.build
+/.ackrc
+/.build/
+!/.gitignore
+/.latest
+/Dist-Zilla-Plugin-Test-MinimumVersion-*/
+/Dist-Zilla-Plugin-Test-MinimumVersion-*.tar.gz
