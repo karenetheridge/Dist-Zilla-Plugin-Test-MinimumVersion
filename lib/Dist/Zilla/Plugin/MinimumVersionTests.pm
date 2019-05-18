@@ -18,12 +18,6 @@ In C<dist.ini>:
 
     [Test::MinimumVersion]
 
-=begin :prelude
-
-=for test_synopsis BEGIN { die "SKIP: Synopsis isn't Perl code" }
-
-=end :prelude
-
 =cut
 
 before register_component => sub {

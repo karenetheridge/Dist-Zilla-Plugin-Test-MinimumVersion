@@ -58,7 +58,6 @@ In C<dist.ini>:
     [Test::MinimumVersion]
     max_target_perl = 5.10.1
 
-=for test_synopsis
 1;
 __END__
 
