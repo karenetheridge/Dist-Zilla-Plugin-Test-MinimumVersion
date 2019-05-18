@@ -3,6 +3,7 @@ Revision history for Perl extension {{$dist->name}}
 {{$NEXT}}
     - remove shebang from generated test
     - add strict, warnings to generated test
+    - separate file gathering and file munging into separate phases
 
 2.000008  2018-03-19
     - make this test an author rather than release test -- it is a test you

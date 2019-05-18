@@ -8,10 +8,16 @@ package Dist::Zilla::Plugin::Test::MinimumVersion;
 our $VERSION = '2.000009';
 
 use Moose;
-extends 'Dist::Zilla::Plugin::InlineFiles';
-with 'Dist::Zilla::Role::TextTemplate',
+with
+    'Dist::Zilla::Role::FileGatherer',
+    'Dist::Zilla::Role::FileMunger',
+    'Dist::Zilla::Role::TextTemplate',
     'Dist::Zilla::Role::PrereqSource';
 
+use Sub::Exporter::ForMethods 'method_installer'; # method_installer returns a sub.
+use Data::Section 0.004 # fixed header_re
+    { installer => method_installer }, '-setup';
+use List::Util 'first';
 use namespace::autoclean;
 
 has max_target_perl => (
@@ -20,18 +26,34 @@ has max_target_perl => (
     predicate => 'has_max_target_perl',
 );
 
-around add_file => sub {
-    my ($orig, $self, $file) = @_;
-    $self->$orig(
-        Dist::Zilla::File::InMemory->new({
-            name => $file->name,
-            content => $self->fill_in_string(
-                $file->content,
-                { (version => $self->max_target_perl)x!!$self->has_max_target_perl }
-            ),
-        })
+use constant FILENAME => 'xt/author/minimum-version.t';  # could be configurable, someday..
+
+sub gather_files
+{
+    my $self = shift;
+
+    require Dist::Zilla::File::InMemory;
+    $self->add_file(
+        Dist::Zilla::File::InMemory->new(
+            name => FILENAME,
+            content => ${$self->section_data(FILENAME)},
+        )
     );
-};
+}
+
+sub munge_files
+{
+    my $self = shift;
+
+    my $file = first { $_->name eq FILENAME } @{ $self->zilla->files };
+    $file->content(
+        $self->fill_in_string(
+            $file->content,
+            { (version => $self->max_target_perl)x!!$self->has_max_target_perl }
+        )
+    );
+    return;
+}
 
 =for Pod::Coverage register_prereqs
 
@@ -62,6 +84,8 @@ In C<dist.ini>:
 __END__
 
 =head1 DESCRIPTION
+
+=for Pod::Coverage FILENAME gather_files munge_files register_prereqs
 
 This is an extension of L<Dist::Zilla::Plugin::InlineFiles>, providing a
 L<Test::MinimumVersion> test:
