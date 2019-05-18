@@ -10,6 +10,8 @@ our $VERSION = '2.000009';
 use Moose;
 extends 'Dist::Zilla::Plugin::Test::MinimumVersion';
 
+use namespace::autoclean;
+
 =head1 SYNOPSIS
 
 In C<dist.ini>:
@@ -29,5 +31,4 @@ before register_component => sub {
 };
 
 __PACKAGE__->meta->make_immutable;
-no Moose;
 1;

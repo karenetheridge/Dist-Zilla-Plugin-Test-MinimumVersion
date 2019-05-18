@@ -12,6 +12,8 @@ extends 'Dist::Zilla::Plugin::InlineFiles';
 with 'Dist::Zilla::Role::TextTemplate',
     'Dist::Zilla::Role::PrereqSource';
 
+use namespace::autoclean;
+
 has max_target_perl => (
     is => 'ro',
     isa => 'Str',
@@ -47,7 +49,6 @@ sub register_prereqs {
 }
 
 __PACKAGE__->meta->make_immutable;
-no Moose;
 1;
 
 =head1 SYNOPSIS
