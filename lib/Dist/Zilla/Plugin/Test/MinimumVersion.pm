@@ -28,6 +28,18 @@ has max_target_perl => (
 
 use constant FILENAME => 'xt/author/minimum-version.t';  # could be configurable, someday..
 
+around dump_config => sub
+{
+    my ($orig, $self) = @_;
+    my $config = $self->$orig;
+
+    $config->{+__PACKAGE__} = +{
+        max_target_perl => $self->max_target_perl,
+        blessed($self) ne __PACKAGE__ ? ( version => $VERSION ) : (),
+    };
+    return $config;
+};
+
 sub gather_files
 {
     my $self = shift;
