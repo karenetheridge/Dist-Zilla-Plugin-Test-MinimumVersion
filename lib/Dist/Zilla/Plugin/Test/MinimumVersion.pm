@@ -18,6 +18,7 @@ use Sub::Exporter::ForMethods 'method_installer'; # method_installer returns a s
 use Data::Section 0.004 # fixed header_re
     { installer => method_installer }, '-setup';
 use List::Util 'first';
+use Moose::Util::TypeConstraints 'role_type';
 use namespace::autoclean;
 
 has max_target_perl => (
@@ -40,24 +41,29 @@ around dump_config => sub
     return $config;
 };
 
+has _file => (
+    is => 'rw', isa => role_type('Dist::Zilla::Role::File'),
+);
+
 sub gather_files
 {
     my $self = shift;
 
     require Dist::Zilla::File::InMemory;
-    $self->add_file(
+    $self->add_file($self->_file(
         Dist::Zilla::File::InMemory->new(
             name => FILENAME,
             content => ${$self->section_data(FILENAME)},
-        )
+        ))
     );
+    return;
 }
 
-sub munge_files
+sub munge_file
 {
-    my $self = shift;
+    my ($self, $file) = @_;
 
-    my $file = first { $_->name eq FILENAME } @{ $self->zilla->files };
+    return unless $file == $self->_file;
     $file->content(
         $self->fill_in_string(
             $file->content,
@@ -97,7 +103,7 @@ __END__
 
 =head1 DESCRIPTION
 
-=for Pod::Coverage FILENAME gather_files munge_files register_prereqs
+=for Pod::Coverage FILENAME gather_files munge_file register_prereqs
 
 This is an extension of L<Dist::Zilla::Plugin::InlineFiles>, providing a
 L<Test::MinimumVersion> test:
