@@ -98,9 +98,6 @@ In C<dist.ini>:
     [Test::MinimumVersion]
     max_target_perl = 5.10.1
 
-1;
-__END__
-
 =head1 DESCRIPTION
 
 =for Pod::Coverage FILENAME gather_files munge_file register_prereqs
