@@ -1,6 +1,6 @@
 Revision history for Perl extension Dist-Zilla-Plugin-Test-MinimumVersion
 
-{{$NEXT}}
+2.000011  2024-10-20 18:29:52Z
     - removed direct dependency on Test::MinimumVersion
 
 2.000010  2019-05-24 04:52:07Z
